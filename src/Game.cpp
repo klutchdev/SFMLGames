@@ -22,7 +22,7 @@ void Game::createSaveFile()
         output_fstream << this->points << std::endl;
         std::cout << "√ Success\n" << std::endl;
     }
-    else std::cerr << "Error saving game!" << std::endl;
+    else std::cerr << "x Error saving game!" << std::endl;
 }
 
 void Game::loadSaveFile()
@@ -46,7 +46,7 @@ void Game::loadSaveFile()
         saveFile.close();
         std::cout << "√ Success"<< std::endl;
     }
-    else std::cerr << "Error opening save file!" << std::endl;
+    else std::cerr << "x No save file found... will create later" << std::endl;
     
 }
 
@@ -89,7 +89,7 @@ void Game::initFonts()
     std::cout << "Initializing fonts..." << std::endl;
 
     if (!this->font.loadFromFile("./assets/fonts/press-start.ttf"))
-        std::cout << "Failed to load font!" << std::endl;
+        std::cout << "x Failed to load font!" << std::endl;
 
     std::cout << "√ Success" << std::endl;
 }
