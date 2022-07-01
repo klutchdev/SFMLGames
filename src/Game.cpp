@@ -46,7 +46,7 @@ void Game::loadSaveFile()
         saveFile.close();
         std::cout << "√ Success"<< std::endl;
     }
-    else std::cerr << "x No save file found... will create later" << std::endl;
+    else std::cerr << "x No save file found...will create" << std::endl;
     
 }
 
