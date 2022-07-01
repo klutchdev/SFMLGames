@@ -225,7 +225,7 @@ void Game::showGameLog()
     std::cout << "\n*********** GAME OVER ***********"               << std::endl;
     std::cout << "*"                                                 << std::endl;
     std::cout << "*      Previous score: " << this->lastScore        << std::endl;
-    std::cout << "*          Your score: " << this->points           << std::endl;
+    std::cout << "*      Your new score: " << this->points           << std::endl;
     std::cout << "*"                                                 << std::endl;
     std::cout << "*   Enemies destroyed: " << this->enemiesDestroyed << std::endl;
     std::cout << "*         Shots fired: " << this->shots            << std::endl;
