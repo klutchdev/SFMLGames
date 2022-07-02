@@ -4,9 +4,12 @@
 #include <SFML/System.hpp>
 
 #include "Player.h"
+#include "Bullet.h"
 
 #include <iostream>
 #include <vector>
+#include <string>
+#include <map>
 #include <ctime>
 #include <sstream>
 #include <fstream>
@@ -20,13 +23,18 @@ class Game
 private:
     // Window
     sf::RenderWindow *window;
-    // sf::Event event;
     sf::VideoMode videoMode;
     sf::String windowTitle;
+
+    // Resources
+    std::map<std::string, sf::Texture *> textures;
+    std::vector<Bullet *> bullets;
 
     Player *player;
 
     void initWindow();
+    void initTextures();
+
     void initPlayer();
 
 public:
@@ -37,6 +45,7 @@ public:
 
     void updatePollEvents();
     void updateInput();
+    void updateBullets();
     void update();
     void render();
 };

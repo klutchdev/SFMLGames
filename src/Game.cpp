@@ -16,6 +16,12 @@ void Game::initWindow()
     std::cout << "√ Success" << std::endl;
 }
 
+void Game::initTextures()
+{
+    this->textures["BULLET"] = new sf::Texture();
+    this->textures["BULLET"]->loadFromFile("src/bullet.png");
+}
+
 void Game::initPlayer()
 {
     this->player = new Player();
@@ -25,6 +31,7 @@ void Game::initPlayer()
 Game::Game()
 {
     this->initWindow();
+    this->initTextures();
     this->initPlayer();
 }
 
@@ -33,6 +40,18 @@ Game::~Game()
 {
     delete this->window;
     delete this->player;
+
+    // Delete textures
+    for (auto &i : this->textures)
+    {
+        delete i.second;
+    }
+
+    // Delete bullets
+    for (auto *i : this->bullets)
+    {
+        delete i;
+    }
 }
 
 //============= PUBLIC ==================//
@@ -57,7 +76,6 @@ void Game::updatePollEvents()
         @return void
 
         - Handles events
-
     */
 
     sf::Event event;
@@ -90,7 +108,6 @@ void Game::updateInput()
         @return void
 
         - Update player input
-
     */
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -101,6 +118,43 @@ void Game::updateInput()
         this->player->move(0.f, -1.f);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         this->player->move(0.f, 1.f);
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->player->canAttack())
+    {
+        this->bullets.push_back(
+            new Bullet(
+                this->textures["BULLET"],
+                this->player->getPos().x,
+                this->player->getPos().y,
+                0.f,
+                -1.f,
+                15.f));
+    }
+}
+
+void Game::updateBullets()
+{
+    /**
+        @return void
+
+        - Update bullets
+    */
+
+    unsigned int counter = 0;
+    for (auto *bullet : this->bullets)
+    {
+        bullet->update();
+
+        // Bullet culling for top of the screen
+        if (bullet->getBounds().top + bullet->getBounds().height < 0.f)
+        {
+            delete this->bullets.at(counter);
+            this->bullets.erase(this->bullets.begin() + counter);
+            --counter;
+        }
+
+        ++counter;
+    }
 }
 
 void Game::update()
@@ -114,6 +168,10 @@ void Game::update()
     this->updatePollEvents();
 
     this->updateInput();
+
+    this->player->update();
+
+    this->updateBullets();
 }
 
 void Game::render()
@@ -127,6 +185,10 @@ void Game::render()
 
     this->window->clear();
 
+    for (auto *bullet : this->bullets)
+    {
+        bullet->render(this->window);
+    }
     this->player->render(*this->window);
 
     this->window->display();
