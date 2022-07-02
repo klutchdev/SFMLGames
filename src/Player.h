@@ -16,6 +16,9 @@ private:
     float attackCooldown;
     float attackCooldownMax;
 
+    int hp;
+    int hpMax;
+
     void initVariables();
     void initTexture();
     void initSprite();
@@ -27,6 +30,14 @@ public:
     // Accessor
     const sf::Vector2f &getPos() const;
     const sf::FloatRect getBounds() const;
+
+    const int &getHp() const;
+    const int &getHpMax() const;
+
+    // Modifiers
+    void setPosition(const sf::Vector2f pos);
+    void setHp(const int hp);
+    void loseHp(const int value);
 
     void move(const float dirX, const float dirY);
     const bool canAttack();

@@ -4,9 +4,13 @@
 void Player::initVariables()
 {
     this->movementSpeed = 5.f;
-    this->attackCooldownMax = 4.f;
+    this->attackCooldownMax = 5.f;
     this->attackCooldown = this->attackCooldownMax;
+
+    this->hpMax = 100;
+    this->hp = this->hpMax;
 }
+
 void Player::initTexture()
 {
     if (!this->texture.loadFromFile("src/ship.png"))
@@ -41,6 +45,31 @@ const sf::Vector2f &Player::getPos() const
 const sf::FloatRect Player::getBounds() const
 {
     return this->sprite.getGlobalBounds();
+}
+
+const int &Player::getHp() const
+{
+    return this->hp;
+}
+
+const int &Player::getHpMax() const
+{
+    return this->hpMax;
+}
+
+void Player::setPosition(const sf::Vector2f pos)
+{
+    this->sprite.setPosition(pos);
+}
+
+void Player::setHp(const int hp)
+{
+    this->hp = hp;
+}
+
+void Player::loseHp(const int value)
+{
+    this->hp -= value;
 }
 
 void Player::move(const float dirX, const float dirY)
