@@ -5,6 +5,7 @@
 
 #include "Player.h"
 #include "Bullet.h"
+#include "Enemy.h"
 
 #include <iostream>
 #include <vector>
@@ -30,12 +31,24 @@ private:
     std::map<std::string, sf::Texture *> textures;
     std::vector<Bullet *> bullets;
 
+    // Player
     Player *player;
+
+    // Enemies
+    float spawnTimer;
+    float spawnTimerMax;
+    std::vector<Enemy *> enemies;
+
+    // GUI
+    sf::Font font;
+    sf::Text pointText;
 
     void initWindow();
     void initTextures();
+    void initGUI();
 
     void initPlayer();
+    void initEnemies();
 
 public:
     Game();
@@ -45,7 +58,12 @@ public:
 
     void updatePollEvents();
     void updateInput();
+    void updateGUI();
     void updateBullets();
+    void updateEnemies();
+    void updateCombat();
     void update();
+
+    void renderGUI();
     void render();
 };

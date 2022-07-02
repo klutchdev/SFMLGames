@@ -22,9 +22,26 @@ void Game::initTextures()
     this->textures["BULLET"]->loadFromFile("src/bullet.png");
 }
 
+void Game::initGUI()
+{
+    if (!this->font.loadFromFile("src/press-start.ttf"))
+        std::cout << "Error loading font" << std::endl;
+
+    this->pointText.setFont(this->font);
+    this->pointText.setCharacterSize(16);
+    this->pointText.setFillColor(sf::Color::White);
+    this->pointText.setString("Points: ");
+}
+
 void Game::initPlayer()
 {
     this->player = new Player();
+}
+
+void Game::initEnemies()
+{
+    this->spawnTimerMax = 50.f;
+    this->spawnTimer = this->spawnTimerMax;
 }
 
 //============= CONSTRUCTOR =============//
@@ -32,7 +49,9 @@ Game::Game()
 {
     this->initWindow();
     this->initTextures();
+    this->initGUI();
     this->initPlayer();
+    this->initEnemies();
 }
 
 //============= DESTRUCTOR ==============//
@@ -42,15 +61,21 @@ Game::~Game()
     delete this->player;
 
     // Delete textures
-    for (auto &i : this->textures)
+    for (auto &texture : this->textures)
     {
-        delete i.second;
+        delete texture.second;
     }
 
     // Delete bullets
-    for (auto *i : this->bullets)
+    for (auto *bullet : this->bullets)
     {
-        delete i;
+        delete bullet;
+    }
+
+    // Delete enemies
+    for (auto *enemy : this->enemies)
+    {
+        delete enemy;
     }
 }
 
@@ -119,17 +144,34 @@ void Game::updateInput()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         this->player->move(0.f, 1.f);
 
+    // TODO: Make different bullet types
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->player->canAttack())
     {
         this->bullets.push_back(
-            new Bullet(
-                this->textures["BULLET"],
-                this->player->getPos().x,
-                this->player->getPos().y,
-                0.f,
-                -1.f,
-                15.f));
+            new Bullet(this->textures["BULLET"],
+                       this->player->getPos().x - 2.f,
+                       this->player->getPos().y,
+                       0.f,
+                       -1.f,
+                       15.f));
+        // Doubles shots
+        this->bullets.push_back(
+            new Bullet(this->textures["BULLET"],
+                       this->player->getPos().x + 20.f,
+                       this->player->getPos().y,
+                       0.f,
+                       -1.f,
+                       15.f));
     }
+}
+
+void Game::updateGUI()
+{
+    /**
+        @return void
+
+        - Updates the GUI
+    */
 }
 
 void Game::updateBullets()
@@ -157,6 +199,50 @@ void Game::updateBullets()
     }
 }
 
+void Game::updateEnemies()
+{
+    /**
+        @return void
+
+        - Update enemies
+    */
+
+    this->spawnTimer += 0.5f;
+    if (this->spawnTimer >= this->spawnTimerMax)
+    {
+        this->enemies.push_back(new Enemy(rand() % this->window->getSize().x - 20.f, -100.f));
+        this->spawnTimer = 0.0f;
+    }
+
+    for (int i = 0; i < this->enemies.size(); i++)
+    {
+        bool enemyRemoved = false;
+        this->enemies[i]->update();
+
+        for (int k = 0; k < this->bullets.size() && !enemyRemoved; k++)
+        {
+            if (this->bullets[i]->getBounds().intersects(this->enemies[i]->getBounds()))
+            {
+                this->bullets.erase(this->bullets.begin() + k);
+                this->enemies.erase(this->enemies.begin() + i);
+                enemyRemoved = true;
+            }
+        }
+
+        // Remove enemy at the bottom of the screen
+        if (!enemyRemoved)
+            if (this->enemies[i]->getBounds().top > this->window->getSize().y)
+            {
+                this->enemies.erase(this->enemies.begin() + i);
+                enemyRemoved = true;
+            }
+    }
+}
+
+void Game::updateCombat()
+{
+}
+
 void Game::update()
 {
     /**
@@ -172,6 +258,21 @@ void Game::update()
     this->player->update();
 
     this->updateBullets();
+
+    this->updateEnemiesAndCombat();
+
+    this->updateGUI();
+}
+
+void Game::renderGUI()
+{
+    /**
+        @return void
+
+        - Renders the GUI
+    */
+
+    this->window->draw(this->pointText);
 }
 
 void Game::render()
@@ -185,10 +286,16 @@ void Game::render()
 
     this->window->clear();
 
-    for (auto *bullet : this->bullets)
+    for (int i = 0; i < this->bullets.size(); i++)
     {
-        bullet->render(this->window);
+        this->bullets[i]->render(this->window);
     }
+
+    for (int i = 0; i < this->enemies.size(); i++)
+    {
+        this->enemies[i]->render(this->window);
+    }
+
     this->player->render(*this->window);
 
     this->window->display();
