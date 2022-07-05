@@ -2,7 +2,7 @@
 
 void GameState::initKeybinds()
 {
-    std::ifstream ifs("gamestate_keybinds.ini");
+    std::ifstream ifs("Config/gamestate_keybinds.ini");
 
     if (ifs.is_open())
     {
@@ -20,10 +20,8 @@ void GameState::initKeybinds()
 
 void GameState::initTextures()
 {
-    sf::Texture temp;
-
-    temp.loadFromFile("Sprites/Player/syman.png");
-    this->textures["PLAYER_IDLE"] = temp;
+    if (!this->textures["PLAYER_IDLE"].loadFromFile("Sprites/Player/syman.png"))
+        std::cout << "Error loading player idle texture" << std::endl;
 }
 
 void GameState::initPlayers()

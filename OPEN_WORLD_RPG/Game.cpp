@@ -11,7 +11,7 @@ void Game::initVariables()
 void Game::initWindow()
 {
     // Get SFML window options from window.ini file
-    std::ifstream ifs("window.ini");
+    std::ifstream ifs("Config/window.ini");
     this->videoModes = sf::VideoMode::getFullscreenModes();
 
     std::string title = "None";
@@ -45,7 +45,7 @@ void Game::initWindow()
 
 void ::Game::initKeys()
 {
-    std::ifstream ifs("supported_keys.ini");
+    std::ifstream ifs("Config/supported_keys.ini");
 
     if (ifs.is_open())
     {

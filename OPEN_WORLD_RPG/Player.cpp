@@ -5,6 +5,7 @@ void Player::initVariables()
 }
 void Player::initComponents()
 {
+    this->createMovementComponent(20.f);
 }
 
 Player::Player(float x, float y, sf::Texture *texture)
@@ -13,7 +14,8 @@ Player::Player(float x, float y, sf::Texture *texture)
     this->initComponents();
     this->createSprite(texture);
     this->setPosition(x, y);
-    this->setScale(2.f, 2.f);
+
+    this->setScale(1.5f, 1.5f);
 }
 
 Player::~Player()

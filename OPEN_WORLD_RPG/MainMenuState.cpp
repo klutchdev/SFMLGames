@@ -12,7 +12,7 @@ void MainMenuState::initBackground()
             static_cast<float>(this->window->getSize().x),
             static_cast<float>(this->window->getSize().y)));
 
-    if (!this->backgroundTexture.loadFromFile("BG.jpg"))
+    if (!this->backgroundTexture.loadFromFile("Textures/BG.jpg"))
     {
         throw("Failed to load BG texture");
     };
@@ -22,13 +22,13 @@ void MainMenuState::initBackground()
 
 void MainMenuState::initFonts()
 {
-    if (!this->font.loadFromFile("press-start.ttf"))
+    if (!this->font.loadFromFile("Fonts/press-start.ttf"))
         throw("Error loading font!");
 }
 
 void MainMenuState::initKeybinds()
 {
-    std::ifstream ifs("mainmenustate_keybinds.ini");
+    std::ifstream ifs("Config/mainmenustate_keybinds.ini");
 
     if (ifs.is_open())
     {
