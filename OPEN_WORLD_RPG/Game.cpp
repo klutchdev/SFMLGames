@@ -97,16 +97,8 @@ void Game::updateSFMLEvents()
         switch (sfEvent.type)
         {
         case sf::Event::Closed:
-            std::cout << "\nQuitting..." << std::endl;
+            std::cout << "\nQuitting game..." << std::endl;
             this->window->close();
-            break;
-
-        case sf::Event::KeyPressed:
-            if (sfEvent.key.code == sf::Keyboard::Escape)
-            {
-                std::cout << "\nQuitting..." << std::endl;
-                this->window->close();
-            }
             break;
 
         default:
