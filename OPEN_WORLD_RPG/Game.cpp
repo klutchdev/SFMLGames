@@ -97,7 +97,7 @@ void Game::updateSFMLEvents()
         switch (sfEvent.type)
         {
         case sf::Event::Closed:
-            std::cout << "\nQuitting game..." << std::endl;
+            std::cout << "Quitting game..." << std::endl;
             this->window->close();
             break;
 

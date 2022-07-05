@@ -47,26 +47,45 @@ void MainMenuState::initKeybinds()
 void MainMenuState::initButtons()
 {
 
-    this->buttons["GAME_STATE"] = new Button(275, 150, 250, 75,
+    this->buttons["GAME_STATE"] = new Button(275, 100, 250, 75,
                                              &this->font,
-                                             "NEW GAME",
-                                             sf::Color(70, 70, 70, 200),
+                                             "NEW GAME", 24,
+                                             sf::Color(20, 20, 20, 200),
                                              sf::Color::Red,
-                                             sf::Color(20, 20, 20, 200));
+                                             sf::Color(20, 20, 20, 250),
+                                             sf::Color(40, 40, 40, 200),
+                                             sf::Color(20, 20, 20, 200),
+                                             sf::Color::Red);
 
-    this->buttons["SETTINGS_STATE"] = new Button(275, 250, 250, 75,
+    this->buttons["SETTINGS_STATE"] = new Button(275, 200, 250, 75,
                                                  &this->font,
-                                                 "SETTINGS",
-                                                 sf::Color(100, 100, 100, 200),
+                                                 "SETTINGS", 24,
+                                                 sf::Color(20, 20, 20, 200),
                                                  sf::Color::Red,
-                                                 sf::Color(20, 20, 20, 200));
+                                                 sf::Color(20, 20, 20, 250),
+                                                 sf::Color(40, 40, 40, 200),
+                                                 sf::Color(20, 20, 20, 200),
+                                                 sf::Color::Red);
 
-    this->buttons["EXIT_STATE"] = new Button(275, 350, 250, 75,
+    this->buttons["EDITOR_STATE"] = new Button(275, 300, 250, 75,
+                                               &this->font,
+                                               "EDITOR", 24,
+                                               sf::Color(20, 20, 20, 200),
+                                               sf::Color::Red,
+                                               sf::Color(20, 20, 20, 250),
+                                               sf::Color(40, 40, 40, 200),
+                                               sf::Color(20, 20, 20, 200),
+                                               sf::Color::Red);
+
+    this->buttons["EXIT_STATE"] = new Button(275, 400, 250, 75,
                                              &this->font,
-                                             "QUIT",
-                                             sf::Color(100, 100, 100, 200),
+                                             "QUIT", 24,
+                                             sf::Color(20, 20, 20, 200),
                                              sf::Color::Red,
-                                             sf::Color(20, 20, 20, 200));
+                                             sf::Color(20, 20, 20, 250),
+                                             sf::Color(40, 40, 40, 200),
+                                             sf::Color(20, 20, 20, 200),
+                                             sf::Color::Red);
 }
 
 MainMenuState::MainMenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)

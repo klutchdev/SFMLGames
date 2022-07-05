@@ -5,7 +5,7 @@ void Player::initVariables()
 }
 void Player::initComponents()
 {
-    this->createMovementComponent(50.f, 5.f, 3.f);
+    this->createMovementComponent(800.f, 15.f, 5.f);
 }
 
 Player::Player(float x, float y, sf::Texture &texture)
