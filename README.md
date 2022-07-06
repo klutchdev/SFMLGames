@@ -40,7 +40,7 @@
 ![Gameplay](./screenshots/SpaceBlaster.png)
 
 #### Game over
-![Game over screen](./screenshots/SpaceBlaster.png)
+![Game over screen](./screenshots/SpaceBlaster2.png)
 
 ---
 
