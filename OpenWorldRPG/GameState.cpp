@@ -1,6 +1,7 @@
 #include "GameState.h"
 
 //============= PRIVATE =================//
+
 void GameState::initKeybinds()
 {
     std::ifstream ifs("Config/gamestate_keybinds.ini");
@@ -46,6 +47,7 @@ GameState::~GameState()
 }
 
 //============= PUBLIC ==================//
+
 void GameState::updateInput(const float &dt)
 {
 
