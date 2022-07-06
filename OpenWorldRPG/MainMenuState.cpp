@@ -24,7 +24,7 @@ void MainMenuState::initBackground()
 void MainMenuState::initFonts()
 {
     if (!this->font.loadFromFile("Fonts/press-start.ttf"))
-        throw("Error loading font!");
+        std::cout << "Error loading font!" << std::endl;
 }
 
 void MainMenuState::initKeybinds()
@@ -136,9 +136,8 @@ void MainMenuState::updateButtons()
     // this->states->push(new GameState(this->window, this->supportedKeys, this->states));
     // std::cout << "Settings" << std::endl;
 
-    // if (this->buttons["EDITOR_STATE"]->isPressed())
-    // this->states->push(new GameState(this->window, this->supportedKeys, this->states));
-    // std::cout << "Open editor" << std::endl;
+    if (this->buttons["EDITOR_STATE"]->isPressed())
+        this->states->push(new EditorState(this->window, this->supportedKeys, this->states));
 
     if (this->buttons["EXIT_STATE"]->isPressed())
         this->endState();

@@ -3,6 +3,9 @@
 #include "MovementComponent.h"
 #include "AnimationComponent.h"
 
+class MovementComponent;
+class AnimationComponent;
+
 class Entity
 {
 private:
@@ -49,5 +52,5 @@ public:
     virtual const float getSpriteDistance(const Entity &entity) const;
 
     virtual void update(const float &dt, sf::Vector2f &mouse_pos_view, const sf::View &view) = 0;
-    virtual void render(sf::RenderTarget &target) = 0;
+    virtual void render(sf::RenderTarget &target, sf::Shader *shader, const sf::Vector2f light_position, const bool show_hitbox) = 0;
 };

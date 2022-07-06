@@ -1,7 +1,7 @@
+#include "headers.h"
 #include "GameState.h"
 
 //============= PRIVATE =================//
-
 void GameState::initKeybinds()
 {
     std::ifstream ifs("Config/gamestate_keybinds.ini");
@@ -28,7 +28,7 @@ void GameState::initTextures()
 
 void GameState::initPlayers()
 {
-    this->player = new Player(0, 0, this->textures["PLAYER_SHEET"]);
+    this->player = new Player(220, 220, this->textures["PLAYER_SHEET"]);
 }
 
 //============= CONSTRUCTOR =============//
@@ -81,5 +81,5 @@ void GameState::render(sf::RenderTarget *target)
     if (!target)
         target = this->window;
 
-    this->player->render(target);
+    this->player->render(this->renderTexture);
 }
