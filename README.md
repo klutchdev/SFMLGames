@@ -1,67 +1,75 @@
-## 1. Brick Hero
+## SFML Games
 
-### Instructions
+### Reference
 
-#### Navigate to the main directory
+[SFML Docs](https://www.sfml-dev.org/documentation/2.5.1/annotated.php)
+
+[CPP Reference](https://en.cppreference.com/w/)
+
+### 1. Brick Hero
+
+#### Instructions
+
+##### Navigate to the main directory
 `cd SFML_TUTORIAL`
 
-#### Compile
+##### Compile
 `g++ -g ./BrickHero/main.cpp ./BrickHero/Game.cpp -o ./BrickHero/prog -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network`
 
-#### Run
+##### Run
 `./BrickHero/prog`
 
-### Screenshots
+#### Screenshots
 
-#### Gameplay
+##### Gameplay
 ![Gameplay](./screenshots/BrickHero.png)
 
-#### Game over
+##### Game over
 ![Game over screen](./screenshots/BrickHero2.png)
 
 ---
 
-## 2. Space Blaster
+### 2. Space Blaster
 
-### Instructions
+#### Instructions
 
-#### Navigate to the main directory
+##### Navigate to the main directory
 `cd SFML_TUTORIAL`
 
-#### Compile
+##### Compile
 `g++ -g ./SpaceBlaster/main.cpp ./SpaceBlaster/Bullet.cpp ./SpaceBlaster/Enemy.cpp ./SpaceBlaster/Player.cpp ./SpaceBlaster/Game.cpp -o ./SpaceBlaster/prog -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network`
 
-#### Run
+##### Run
 `./SpaceBlaster/prog`
 
-### Screenshots
+#### Screenshots
 
-#### Gameplay
+##### Gameplay
 ![Gameplay](./screenshots/SpaceBlaster.png)
 
-#### Game over
+##### Game over
 ![Game over screen](./screenshots/SpaceBlaster2.png)
 
 ---
 
-## 3. Open World RPG (IN DEVELOPMENT)
+### 3. Open World RPG (IN DEVELOPMENT)
 
-### Instructions
+#### Instructions
 
-#### Navigate to the main directory
+##### Navigate to the main directory
 `cd SFML_TUTORIAL`
 
-#### Compile
+##### Compile
 `g++ -g ./OpenWorldRPG/main.cpp ./OpenWorldRPG/Game.cpp ./OpenWorldRPG/Entity.cpp ./OpenWorldRPG/GameState.cpp ./OpenWorldRPG/State.cpp ./OpenWorldRPG/MainMenuState.cpp ./OpenWorldRPG/Button.cpp ./OpenWorldRPG/Player.cpp ./OpenWorldRPG/MovementComponent.cpp ./OpenWorldRPG/AnimationComponent.cpp -o ./OpenWorldRPG/prog -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network`
 
-#### Run
+##### Run
 `./OpenWorldRPG/prog`
 
-### Screenshots
+#### Screenshots
 
-#### Menu
+##### Menu
 ![Menu](./screenshots/OpenWorldRPG.png)
 ![Menu](./screenshots/OpenWorldRPG3.png)
 
-#### Game
+##### Game
 ![Gameplay](./screenshots/OpenWorldRPG2.png)

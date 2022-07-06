@@ -1,11 +1,13 @@
 #include "AnimationComponent.h"
 
+//============= CONSTRUCTOR =============//
 AnimationComponent::AnimationComponent(sf::Sprite &sprite, sf::Texture &texture_sheet)
     : sprite(sprite), textureSheet(texture_sheet)
 //, lastAnimation(NULL), priorityAnimation(NULL)
 {
 }
 
+//============= DESTRUCTOR ==============//
 AnimationComponent::~AnimationComponent()
 {
     for (auto &i : this->animations)
@@ -13,6 +15,8 @@ AnimationComponent::~AnimationComponent()
         delete i.second;
     }
 }
+
+//============= PUBLIC ==================//
 
 // const bool &AnimationComponent::isDone(const std::string key)
 // {

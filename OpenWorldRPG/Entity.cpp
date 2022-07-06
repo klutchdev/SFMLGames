@@ -1,22 +1,26 @@
 #include "Entity.h"
 
+//============= PRIVATE =================//
 void Entity::initVariables()
 {
 
     this->movementComponent = NULL;
 }
 
+//============= CONSTRUCTOR =============//
 Entity::Entity()
 {
     this->initVariables();
 }
 
+//============= DESTRUCTOR ==============//
 Entity::~Entity()
 {
     delete this->movementComponent;
     delete this->animationComponent;
 }
 
+//============= PUBLIC ==================//
 void Entity::setTexture(sf::Texture &texture)
 {
     this->sprite.setTexture(texture);

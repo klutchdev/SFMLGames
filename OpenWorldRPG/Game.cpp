@@ -1,15 +1,21 @@
 #include "Game.h"
 
+//============= PRIVATE =================//
 // Initializers
 void Game::initVariables()
 {
+    std::cout << "Initializing values..." << std::endl;
+
     this->window = NULL;
     this->fullscreen = false;
     this->dt = 0.f;
+    std::cout << "√ Success" << std::endl;
 }
 
 void Game::initWindow()
 {
+
+    std::cout << "Initializing window..." << std::endl;
     // Get SFML window options from window.ini file
     std::ifstream ifs("Config/window.ini");
     this->videoModes = sf::VideoMode::getFullscreenModes();
@@ -41,10 +47,12 @@ void Game::initWindow()
         this->window = new sf::RenderWindow(window_bounds, title, sf::Style::Titlebar | sf::Style::Close, windowSettings);
     this->window->setFramerateLimit(framerate_limit);
     this->window->setVerticalSyncEnabled(vertical_sync_enabled);
+    std::cout << "√ Success" << std::endl;
 }
 
 void ::Game::initKeys()
 {
+    std::cout << "Initializing keys..." << std::endl;
     std::ifstream ifs("Config/supported_keys.ini");
 
     if (ifs.is_open())
@@ -58,6 +66,7 @@ void ::Game::initKeys()
     }
 
     ifs.close();
+    std::cout << "√ Success" << std::endl;
 }
 
 void Game::initStates()
@@ -66,14 +75,17 @@ void Game::initStates()
     // this->states.push(new GameState(this->window, &this->supportedKeys));
 }
 
+//============= CONSTRUCTOR =============//
 Game::Game()
 {
+    system("clear");
     this->initVariables();
     this->initWindow();
     this->initKeys();
     this->initStates();
 }
 
+//============= DESTRUCTOR ==============//
 Game::~Game()
 {
     delete this->window;
@@ -85,6 +97,7 @@ Game::~Game()
     }
 }
 
+//============= PUBLIC ==================//
 void Game::updateDt()
 {
     this->dt = this->dtClock.restart().asSeconds();

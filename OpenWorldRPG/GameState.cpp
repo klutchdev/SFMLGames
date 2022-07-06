@@ -1,5 +1,6 @@
 #include "GameState.h"
 
+//============= PRIVATE =================//
 void GameState::initKeybinds()
 {
     std::ifstream ifs("Config/gamestate_keybinds.ini");
@@ -29,6 +30,7 @@ void GameState::initPlayers()
     this->player = new Player(0, 0, this->textures["PLAYER_SHEET"]);
 }
 
+//============= CONSTRUCTOR =============//
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
     : State(window, supportedKeys, states)
 {
@@ -37,11 +39,13 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     this->initPlayers();
 }
 
+//============= DESTRUCTOR ==============//
 GameState::~GameState()
 {
     delete this->player;
 }
 
+//============= PUBLIC ==================//
 void GameState::updateInput(const float &dt)
 {
 

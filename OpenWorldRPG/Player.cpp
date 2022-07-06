@@ -1,5 +1,6 @@
 #include "Player.h"
 
+//============= PRIVATE =================//
 void Player::initVariables()
 {
 }
@@ -8,6 +9,7 @@ void Player::initComponents()
 {
 }
 
+//============= CONSTRUCTOR =============//
 Player::Player(float x, float y, sf::Texture &texture_sheet)
 {
     this->initVariables();
@@ -26,10 +28,12 @@ Player::Player(float x, float y, sf::Texture &texture_sheet)
                                            64, 64); // Width, height
 }
 
+//============= DESTRUCTOR ==============//
 Player::~Player()
 {
 }
 
+//============= PUBLIC ==================//
 void Player::update(const float &dt)
 {
     this->movementComponent->update(dt);

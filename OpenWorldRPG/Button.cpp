@@ -1,5 +1,6 @@
 #include "Button.h"
 
+//============= CONSTRUCTOR =============//
 Button::Button(float x, float y, float width, float height,
                sf::Font *font, std::string text, unsigned character_size,
                sf::Color text_idle_color, sf::Color text_hover_color, sf::Color text_active_color,
@@ -30,10 +31,12 @@ Button::Button(float x, float y, float width, float height,
     this->activeColor = active_color;
 }
 
+//============= DESTRUCTOR ==============//
 Button::~Button()
 {
 }
 
+//============= PUBLIC ==================//
 const bool Button::isPressed() const
 {
     if (this->buttonState == BTN_ACTIVE)
