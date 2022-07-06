@@ -1,17 +1,19 @@
 #include "MovementComponent.h"
 
-//============= CONSTRUCTOR =============//
-MovementComponent::MovementComponent(sf::Sprite &sprite, float maxVelocity, float acceleration, float deceleration)
-    : sprite(sprite), maxVelocity(maxVelocity), acceleration(acceleration), deceleration(deceleration)
+// ============= CONSTRUCTOR =============//
+MovementComponent::MovementComponent(sf::Sprite &sprite,
+                                     float maxVelocity, float acceleration, float deceleration)
+    : sprite(sprite),
+      maxVelocity(maxVelocity), acceleration(acceleration), deceleration(deceleration)
 {
 }
 
-//============= DESTRUCTOR ==============//
+// ============= DESTRUCTOR ==============//
 MovementComponent::~MovementComponent()
 {
 }
 
-//============= PUBLIC ==================//
+// ============= PUBLIC ==================//
 // Accessors
 const float &MovementComponent::getMaxVelocity() const
 {

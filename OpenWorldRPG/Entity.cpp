@@ -1,19 +1,20 @@
 #include "Entity.h"
 
-//============= PRIVATE =================//
+// ============= PRIVATE =================//
+
 void Entity::initVariables()
 {
-
     this->movementComponent = NULL;
+    this->animationComponent = NULL;
 }
 
-//============= CONSTRUCTOR =============//
+// ============= CONSTRUCTOR =============//
 Entity::Entity()
 {
     this->initVariables();
 }
 
-//============= DESTRUCTOR ==============//
+// ============= CONSTRUCTOR =============//
 Entity::~Entity()
 {
     delete this->movementComponent;
@@ -21,6 +22,7 @@ Entity::~Entity()
 }
 
 //============= PUBLIC ==================//
+// Component functions
 void Entity::setTexture(sf::Texture &texture)
 {
     this->sprite.setTexture(texture);
@@ -36,14 +38,64 @@ void Entity::createAnimationComponent(sf::Texture &texture_sheet)
     this->animationComponent = new AnimationComponent(this->sprite, texture_sheet);
 }
 
+MovementComponent *Entity::getMovementComponent()
+{
+    return this->movementComponent;
+}
+
+AnimationComponent *Entity::getAnimationComponent()
+{
+    return this->animationComponent;
+}
+
+const sf::Vector2f &Entity::getPosition() const
+{
+    return this->sprite.getPosition();
+}
+
+const sf::Vector2f &Entity::getSpritePosition() const
+{
+    return this->sprite.getPosition();
+}
+
+const sf::Vector2f Entity::getCenter() const
+{
+    return this->sprite.getPosition() +
+           sf::Vector2f(
+               this->sprite.getGlobalBounds().width / 2.f,
+               this->sprite.getGlobalBounds().height / 2.f);
+}
+
+const sf::Vector2f Entity::getSpriteCenter() const
+{
+    return this->sprite.getPosition() +
+           sf::Vector2f(
+               this->sprite.getGlobalBounds().width / 2.f,
+               this->sprite.getGlobalBounds().height / 2.f);
+    ;
+}
+
+const sf::Vector2i Entity::getGridPosition(const int gridSizeI) const
+{
+    return sf::Vector2i(
+        static_cast<int>(this->sprite.getPosition().x) / gridSizeI,
+        static_cast<int>(this->sprite.getPosition().y) / gridSizeI);
+}
+
+const sf::FloatRect Entity::getGlobalBounds() const
+{
+    return this->sprite.getGlobalBounds();
+}
+
+const sf::FloatRect Entity::getNextPositionBounds(const float &dt) const
+{
+    return sf::FloatRect(-1.f, -1.f, -1.f, -1.f);
+}
+
+// Functions
 void Entity::setPosition(const float x, const float y)
 {
     this->sprite.setPosition(x, y);
-}
-
-void Entity::setScale(const float x, const float y)
-{
-    this->sprite.setScale(x, y);
 }
 
 void Entity::move(const float dir_x, const float dir_y, const float &dt)
@@ -52,16 +104,30 @@ void Entity::move(const float dir_x, const float dir_y, const float &dt)
         this->movementComponent->move(dir_x, dir_y, dt); // Sets velocity
 }
 
-void Entity::update(const float &dt)
+void Entity::stopVelocity()
 {
     if (this->movementComponent)
-        this->movementComponent->update(dt);
+        this->movementComponent->stopVelocity();
 }
 
-void Entity::render(sf::RenderTarget *target)
+void Entity::stopVelocityX()
 {
-    // Deceleration
+    if (this->movementComponent)
+        this->movementComponent->stopVelocityX();
+}
 
-    // Final move
-    target->draw(this->sprite);
+void Entity::stopVelocityY()
+{
+    if (this->movementComponent)
+        this->movementComponent->stopVelocityY();
+}
+
+const float Entity::getDistance(const Entity &entity) const
+{
+    return sqrt(pow(this->getCenter().x - entity.getCenter().x, 2) + pow(this->getCenter().y - entity.getCenter().y, 2));
+}
+
+const float Entity::getSpriteDistance(const Entity &entity) const
+{
+    return sqrt(pow(this->getSpriteCenter().x - entity.getSpriteCenter().x, 2) + pow(this->getSpriteCenter().y - entity.getSpriteCenter().y, 2));
 }

@@ -1,6 +1,6 @@
 #include "State.h"
 
-//============= CONSTRUCTOR =============//
+// ============= CONSTRUCTOR =============//
 State::State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
 {
     this->window = window;
@@ -9,13 +9,13 @@ State::State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys
     this->quit = false;
 }
 
-//============= DESTRUCTOR ==============//
+// ============= DESTRUCTOR ==============//
 State::~State()
 {
 }
 
-//============= PUBLIC ==================//
-//Accessors
+// ============= PUBLIC ==================//
+// Accessors
 const bool &State::getQuit() const
 {
     return this->quit;
