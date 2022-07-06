@@ -13,7 +13,7 @@ void Player::initVariables()
 
 void Player::initTexture()
 {
-    if (!this->texture.loadFromFile("src/ship.png"))
+    if (!this->texture.loadFromFile("Sprites/Player/ship.png"))
         std::cout << "Could not load texture file" << std::endl;
 }
 

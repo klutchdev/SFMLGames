@@ -19,12 +19,12 @@ void Game::initWindow()
 void Game::initTextures()
 {
     this->textures["BULLET"] = new sf::Texture();
-    this->textures["BULLET"]->loadFromFile("src/bullet.png");
+    this->textures["BULLET"]->loadFromFile("Sprites/Projectiles/bullet.png");
 }
 
 void Game::initGUI()
 {
-    if (!this->font.loadFromFile("src/press-start.ttf"))
+    if (!this->font.loadFromFile("Fonts/press-start.ttf"))
         std::cout << "Error loading font" << std::endl;
 
     // Init points text
@@ -58,7 +58,7 @@ void Game::initGUI()
 
 void Game::initWorld()
 {
-    if (!this->worldBackgroundTexture.loadFromFile("src/bg.png"))
+    if (!this->worldBackgroundTexture.loadFromFile("Textures/bg.png"))
         std::cout << "Error loading bg texture" << std::endl;
 
     this->worldBackground.setTexture(this->worldBackgroundTexture);

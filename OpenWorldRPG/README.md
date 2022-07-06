@@ -1,0 +1,2 @@
+## Compile cmd
+`g++ -g ./OpenWorldRPG/main.cpp ./OpenWorldRPG/Game.cpp ./OpenWorldRPG/Entity.cpp ./OpenWorldRPG/GameState.cpp ./OpenWorldRPG/State.cpp ./OpenWorldRPG/MainMenuState.cpp ./OpenWorldRPG/Button.cpp ./OpenWorldRPG/Player.cpp ./OpenWorldRPG/MovementComponent.cpp ./OpenWorldRPG/AnimationComponent.cpp -o ./OpenWorldRPG/prog -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network`

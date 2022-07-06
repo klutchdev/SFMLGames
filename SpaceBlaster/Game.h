@@ -3,10 +3,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
-#include "Player.h"
-#include "Bullet.h"
-#include "Enemy.h"
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -14,6 +10,10 @@
 #include <ctime>
 #include <sstream>
 #include <fstream>
+
+#include "Player.h"
+#include "Bullet.h"
+#include "Enemy.h"
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 1000

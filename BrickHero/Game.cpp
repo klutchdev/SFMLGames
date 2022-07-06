@@ -11,7 +11,7 @@ void Game::createSaveFile()
         - Saves the most recent player score
     */
 
-    std::string filename("gamesave.txt");
+    std::string filename("BrickHero/gamesave.txt");
     std::fstream output_fstream;
 
     std::cout << "\nSaving game..." << std::endl;
@@ -34,7 +34,7 @@ void Game::loadSaveFile()
         - Loads the most recent player score
     */
     std::string line;
-    std::ifstream saveFile("gamesave.txt");
+    std::ifstream saveFile("BrickHero/gamesave.txt");
     
     std::cout << "Loading save file..." << std::endl;
     
@@ -88,7 +88,7 @@ void Game::initFonts()
 {
     std::cout << "Initializing fonts..." << std::endl;
 
-    if (!this->font.loadFromFile("./assets/fonts/press-start.ttf"))
+    if (!this->font.loadFromFile("Fonts/press-start.ttf"))
         std::cout << "x Failed to load font!" << std::endl;
 
     std::cout << "√ Success" << std::endl;
