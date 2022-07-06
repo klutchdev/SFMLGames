@@ -1,4 +1,5 @@
-#pragma once
+#ifndef EDITOR_STATE_H
+#define EDITOR_STATE_H
 
 #include "State.h"
 #include "Button.h"
@@ -27,3 +28,5 @@ public:
   void renderButtons(sf::RenderTarget *target = NULL);
   void render(sf::RenderTarget *target = NULL);
 };
+
+#endif

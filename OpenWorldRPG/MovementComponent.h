@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MOVEMENTCOMPONENT_H
+#define MOVEMENTCOMPONENT_H
 
 #include "headers.h"
 
@@ -41,3 +42,5 @@ public:
     void move(const float x, const float y, const float &dt);
     void update(const float &dt);
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STATE_H
+#define STATE_H
 
 #include "Entity.h"
 
@@ -33,3 +34,5 @@ public:
     virtual void update(const float &dt) = 0;
     virtual void render(sf::RenderTarget *target = NULL) = 0;
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MAIN_MENU_STATE_H
+#define MAIN_MENU_STATE_H
 
 #include "GameState.h"
 #include "EditorState.h"
@@ -30,3 +31,5 @@ public:
     void renderButtons(sf::RenderTarget *target = NULL);
     void render(sf::RenderTarget *target = NULL);
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAMESTATE_H
+#define GAMESTATE_H
 
 #include "State.h"
 #include "Player.h"
@@ -26,3 +27,5 @@ public:
 
     void render(sf::RenderTarget *target = NULL);
 };
+
+#endif

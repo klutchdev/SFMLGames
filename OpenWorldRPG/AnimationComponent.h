@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ANIMATIONCOMPONENT_H
+#define ANIMATIONCOMPONENT_H
 
 #include "headers.h"
 
@@ -126,3 +127,5 @@ public:
     const bool play(const std::string key, const float &dt, const bool priority = false);
     const bool &play(const std::string key, const float &dt, const float &modifier, const float &modifier_max, const bool priority = false);
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BUTTON_H
+#define BUTTON_H
 
 #include "headers.h"
 
@@ -39,3 +40,5 @@ public:
     void update(const sf::Vector2f mousePos);
     void render(sf::RenderTarget *target);
 };
+
+#endif

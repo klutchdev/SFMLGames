@@ -22,7 +22,7 @@ void GameState::initKeybinds()
 
 void GameState::initTextures()
 {
-    if (!this->textures["PLAYER_SHEET"].loadFromFile("Sprites/Player/PLAYER_SHEET2.png"))
+    if (!this->textures["PLAYER_SHEET"].loadFromFile("Sprites/Player/PLAYER_SHEET.png"))
         std::cout << "Error loading player idle texture" << std::endl;
 }
 

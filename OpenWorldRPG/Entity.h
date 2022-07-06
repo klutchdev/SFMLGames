@@ -1,7 +1,9 @@
-#pragma once
+#ifndef ENTITY_H
+#define ENTITY_H
 
 #include "MovementComponent.h"
 #include "AnimationComponent.h"
+#include "HitboxComponent.h"
 
 class MovementComponent;
 class AnimationComponent;
@@ -14,6 +16,7 @@ private:
 protected:
     sf::Sprite sprite;
 
+    HitboxComponent *hitboxComponent;
     MovementComponent *movementComponent;
     AnimationComponent *animationComponent;
 
@@ -23,6 +26,7 @@ public:
 
     // Component functions
     void setTexture(sf::Texture &texture);
+    void createHitboxComponent(sf::Sprite &sprite, float offset_x, float offset_y, float width, float height);
     void createMovementComponent(const float maxVelocity, const float acceleration, const float deceleration);
     void createAnimationComponent(sf::Texture &texture_sheet);
 
@@ -51,6 +55,9 @@ public:
     virtual const float getDistance(const Entity &entity) const;
     virtual const float getSpriteDistance(const Entity &entity) const;
 
-    virtual void update(const float &dt, sf::Vector2f &mouse_pos_view, const sf::View &view) = 0;
-    virtual void render(sf::RenderTarget &target, sf::Shader *shader, const sf::Vector2f light_position, const bool show_hitbox) = 0;
+    // virtual void update(const float &dt, sf::Vector2f &mouse_pos_view, const sf::View &view) = 0;
+    // virtual void render(sf::RenderTarget &target, sf::Shader *shader, const sf::Vector2f light_position, const bool show_hitbox) = 0;
+    virtual void render(sf::RenderTarget &target, sf::Shader *shader, const sf::Vector2f light_position) = 0;
 };
+
+#endif

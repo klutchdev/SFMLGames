@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include "Entity.h"
 
@@ -21,3 +22,5 @@ public:
 
     void render(sf::RenderTarget &target);
 };
+
+#endif
