@@ -20,12 +20,8 @@ private:
         sf::IntRect currentRect;
         sf::IntRect endRect;
 
-        Animation(sf::Sprite &sprite, sf::Texture &texture_sheet,
-                  float animation_timer,
-                  int start_frame_x, int start_frame_y, int frames_x, int frames_y, int width, int height)
-            : sprite(sprite), textureSheet(texture_sheet),
-              animationTimer(animation_timer), timer(0.f), done(false),
-              width(width), height(height)
+        Animation(sf::Sprite &sprite, sf::Texture &texture_sheet, float animation_timer, int start_frame_x, int start_frame_y, int frames_x, int frames_y, int width, int height)
+            : sprite(sprite), textureSheet(texture_sheet), animationTimer(animation_timer), timer(0.f), done(false), width(width), height(height)
         {
             this->startRect = sf::IntRect(start_frame_x * width, start_frame_y * height, width, height);
             this->currentRect = this->startRect;
@@ -42,10 +38,10 @@ private:
         }
 
         // Functions
-        bool play(const float &dt)
+        const bool &play(const float &dt)
         {
             // Update timer
-            bool done = false;
+            this->done = false;
             this->timer += 100.f * dt;
             if (this->timer >= this->animationTimer)
             {
@@ -60,22 +56,22 @@ private:
                 else // Reset
                 {
                     this->currentRect.left = this->startRect.left;
-                    bool done = true;
+                    this->done = true;
                 }
 
                 this->sprite.setTextureRect(this->currentRect);
             }
 
-            return done;
+            return this->done;
         }
 
-        bool play(const float &dt, float mod_percent)
+        const bool &play(const float &dt, float mod_percent)
         {
             // Update timer
             if (mod_percent < 0.5f)
                 mod_percent = 0.5f;
 
-            bool done = false;
+            this->done = false;
             this->timer += mod_percent * 100.f * dt;
             if (this->timer >= this->animationTimer)
             {
@@ -90,13 +86,13 @@ private:
                 else // Reset
                 {
                     this->currentRect.left = this->startRect.left;
-                    bool done = true;
+                    this->done = true;
                 }
 
                 this->sprite.setTextureRect(this->currentRect);
             }
 
-            return done;
+            return this->done;
         }
 
         void reset()
@@ -124,8 +120,8 @@ public:
                       float animation_timer,
                       int start_frame_x, int start_frame_y, int frames_x, int frames_y, int width, int height);
 
-    void play(const std::string key, const float &dt, const bool priority = false);
-    void play(const std::string key, const float &dt, const float &modifier, const float &modifier_max, const bool priority = false);
+    const bool &play(const std::string key, const float &dt, const bool priority = false);
+    const bool &play(const std::string key, const float &dt, const float &modifier, const float &modifier_max, const bool priority = false);
 };
 
 #endif

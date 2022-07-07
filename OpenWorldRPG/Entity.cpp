@@ -112,24 +112,6 @@ void Entity::move(const float dir_x, const float dir_y, const float &dt)
         this->movementComponent->move(dir_x, dir_y, dt); // Sets velocity
 }
 
-// void Entity::stopVelocity()
-// {
-//     if (this->movementComponent)
-//         this->movementComponent->stopVelocity();
-// }
-
-// void Entity::stopVelocityX()
-// {
-//     if (this->movementComponent)
-//         this->movementComponent->stopVelocityX();
-// }
-
-// void Entity::stopVelocityY()
-// {
-//     if (this->movementComponent)
-//         this->movementComponent->stopVelocityY();
-// }
-
 void Entity::update(const float &dt, sf::Vector2f &mouse_pos_view, const sf::View &view)
 {
 }

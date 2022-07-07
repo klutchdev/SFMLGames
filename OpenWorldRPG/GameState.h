@@ -1,16 +1,14 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include "headers.h"
 #include "State.h"
 #include "Player.h"
-
-class State;
 
 class GameState : public State
 {
 private:
     sf::RenderTexture renderTexture;
-    sf::Shader core_shader;
 
     Player *player;
 

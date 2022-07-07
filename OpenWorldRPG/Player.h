@@ -3,14 +3,14 @@
 
 #include "Entity.h"
 
-class Entity;
-
 class Player : public Entity
 {
 private:
+    bool attacking;
+
+    // Initializers
     void initVariables();
     void initComponents();
-    void initAnimations();
 
 public:
     Player(float x, float y, sf::Texture &texture_sheet);

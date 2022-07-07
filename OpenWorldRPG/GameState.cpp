@@ -1,4 +1,3 @@
-#include "headers.h"
 #include "GameState.h"
 
 // ============= PRIVATE =================//
@@ -30,7 +29,7 @@ void GameState::initTextures()
 //! TODO: Fix this
 void GameState::initPlayers()
 {
-    // this->player = new Player(220.f, 220.f, this->textures["PLAYER_SHEET"]);
+    this->player = new Player();
 }
 
 // ============= CONSTRUCTOR =============//
