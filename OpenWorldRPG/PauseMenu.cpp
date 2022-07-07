@@ -50,7 +50,7 @@ std::map<std::string, Button *> &PauseMenu::getButtons()
     return this->buttons;
 }
 
-const bool &PauseMenu::isButtonPressed(const std::string key)
+const bool PauseMenu::isButtonPressed(const std::string key)
 {
     return this->buttons[key]->isPressed();
 }

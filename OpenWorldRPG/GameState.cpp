@@ -41,10 +41,12 @@ void GameState::initPauseMenu()
     this->pmenu->addButton("QUIT", 800.f, "Quit");
 }
 
-//! Fix this
 void GameState::initPlayers()
 {
+    // TODO:
+    //! THE FUCK       👇🏼👇🏼👇🏼👇🏼
     this->player = new Player(0, 0, this->textures["PLAYER_SHEET"]);
+    //! IS  THIS       👆🏻👆🏻👆🏻👆🏻
 }
 
 // ============= CONSTRUCTOR =============//
@@ -97,6 +99,14 @@ void GameState::updatePlayerInput(const float &dt)
         this->player->move(0.f, 1.f, dt);
 }
 
+void GameState::updatePauseMenuButtons()
+{
+    if (this->pmenu->isButtonPressed("QUIT"))
+    {
+        this->endState();
+    }
+}
+
 void GameState::update(const float &dt)
 {
     this->updateMousePositions();
@@ -105,12 +115,12 @@ void GameState::update(const float &dt)
     if (!this->paused) // Unpaused update
     {
         this->updatePlayerInput(dt);
-
         this->player->update(dt);
     }
     else // Paused update
     {
         this->pmenu->update(this->mousePosView);
+        this->updatePauseMenuButtons();
     }
 }
 
