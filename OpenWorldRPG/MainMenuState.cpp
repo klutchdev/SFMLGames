@@ -49,8 +49,8 @@ void MainMenuState::initKeybinds()
 void MainMenuState::initButtons()
 {
 
-    this->buttons["GAME_STATE"] = new Button(275, 225,                      // Position x, y
-                                             250, 75,                       // Width, height
+    this->buttons["GAME_STATE"] = new Button(275.f, 225.f,                  // Position x, y
+                                             250.f, 75.f,                   // Width, height
                                              &this->font,                   // font
                                              "NEW GAME", 30,                // Label, font size
                                              sf::Color(200, 200, 200, 200), // Text idle color
@@ -60,8 +60,8 @@ void MainMenuState::initButtons()
                                              sf::Color(20, 20, 20, 0),      // Button hover color
                                              sf::Color(244, 0, 255, 150));  // Button active color
 
-    this->buttons["SETTINGS_STATE"] = new Button(275, 300,                      // Position x, y
-                                                 250, 75,                       // Width, height
+    this->buttons["SETTINGS_STATE"] = new Button(275.f, 300.f,                  // Position x, y
+                                                 250.f, 75.f,                   // Width, height
                                                  &this->font,                   // Font
                                                  "SETTINGS", 28,                // Label, font size
                                                  sf::Color(200, 200, 200, 200), // Text idle color
@@ -71,8 +71,8 @@ void MainMenuState::initButtons()
                                                  sf::Color(20, 20, 20, 0),      // Button hover color
                                                  sf::Color(244, 0, 255, 150));  // Button active color
 
-    this->buttons["EDITOR_STATE"] = new Button(275, 375,                      // Position x, y
-                                               250, 75,                       // Width, height
+    this->buttons["EDITOR_STATE"] = new Button(275.f, 375.f,                  // Position x, y
+                                               250.f, 75.f,                   // Width, height
                                                &this->font,                   // Font
                                                "EDITOR", 28,                  // Label, font size
                                                sf::Color(200, 200, 200, 200), // Text idle color
@@ -82,8 +82,8 @@ void MainMenuState::initButtons()
                                                sf::Color(20, 20, 20, 0),      // Button hover color
                                                sf::Color(244, 0, 255, 150));  // Button active color
 
-    this->buttons["EXIT_STATE"] = new Button(275, 450,                      // Position x, y
-                                             250, 75,                       // Width, height
+    this->buttons["EXIT_STATE"] = new Button(275.f, 450.f,                  // Position x, y
+                                             250.f, 75.f,                   // Width, height
                                              &this->font,                   // Font
                                              "QUIT", 28,                    // Label, font size
                                              sf::Color(200, 200, 200, 200), // Text idle color

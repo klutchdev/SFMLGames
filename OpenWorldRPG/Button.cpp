@@ -46,7 +46,7 @@ const bool Button::isPressed() const
         return false;
 }
 
-void Button::update(const sf::Vector2f mousePos)
+void Button::update(const sf::Vector2f &mousePos)
 {
     this->buttonState = BTN_IDLE;
 
