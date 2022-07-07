@@ -11,8 +11,8 @@
             "compilerPath": "/usr/bin/g++",
             "compilerArgs": [],
             "cStandard": "gnu17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "macos-gcc-arm64"
+            "cppStandard": "c++17"
+            // "intelliSenseMode": "macos-gcc-arm64"
         }
     ],
     "version": 4
