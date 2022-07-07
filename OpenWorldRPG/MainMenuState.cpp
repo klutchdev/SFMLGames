@@ -1,7 +1,7 @@
 #include "headers.h"
 #include "MainMenuState.h"
 
-//============= PRIVATE =================//
+// ============= PRIVATE =================//
 // Initializers
 void MainMenuState::initVariables()
 {
@@ -94,7 +94,7 @@ void MainMenuState::initButtons()
                                              sf::Color(244, 0, 255, 150));  // Button active color
 }
 
-//============= CONSTRUCTOR =============//
+// ============= CONSTRUCTOR =============//
 MainMenuState::MainMenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
     : State(window, supportedKeys, states)
 {
@@ -110,7 +110,7 @@ MainMenuState::MainMenuState(sf::RenderWindow *window, std::map<std::string, int
     }
 }
 
-//============= DESTRUCTOR ==============//
+// ============= DESTRUCTOR ==============//
 MainMenuState::~MainMenuState()
 {
     // auto it = this->buttons.begin();
@@ -120,7 +120,7 @@ MainMenuState::~MainMenuState()
     }
 }
 
-//============= PUBLIC ==================//
+// ============= PUBLIC ==================//
 void MainMenuState::updateInput(const float &dt)
 {
 }
@@ -152,7 +152,7 @@ void MainMenuState::update(const float &dt)
     this->updateButtons();
 }
 
-void MainMenuState::renderButtons(sf::RenderTarget *target)
+void MainMenuState::renderButtons(sf::RenderTarget &target)
 {
     for (auto &it : this->buttons)
     {
@@ -167,5 +167,5 @@ void MainMenuState::render(sf::RenderTarget *target)
 
     target->draw(this->background);
 
-    this->renderButtons(target);
+    this->renderButtons(*target);
 }

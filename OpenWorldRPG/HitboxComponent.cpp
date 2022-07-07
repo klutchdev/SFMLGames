@@ -23,6 +23,7 @@ HitboxComponent::~HitboxComponent()
 }
 
 // ============= PUBLIC =================//
+// Accessors
 bool HitboxComponent::checkIntersect(const sf::FloatRect &fRect)
 {
     return this->hitbox.getGlobalBounds().intersects(fRect);

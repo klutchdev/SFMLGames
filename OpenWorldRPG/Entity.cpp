@@ -2,7 +2,6 @@
 #include "Entity.h"
 
 // ============= PRIVATE =================//
-
 void Entity::initVariables()
 {
     this->hitboxComponent = NULL;
@@ -24,7 +23,7 @@ Entity::~Entity()
     delete this->animationComponent;
 }
 
-//============= PUBLIC ==================//
+// ============= PUBLIC ==================//
 // Component functions
 void Entity::setTexture(sf::Texture &texture)
 {
@@ -56,6 +55,7 @@ AnimationComponent *Entity::getAnimationComponent()
     return this->animationComponent;
 }
 
+// Accessors
 const sf::Vector2f &Entity::getPosition() const
 {
     return this->sprite.getPosition();
@@ -128,6 +128,18 @@ void Entity::stopVelocityY()
 {
     if (this->movementComponent)
         this->movementComponent->stopVelocityY();
+}
+
+void Entity::update(const float &dt, sf::Vector2f &mouse_pos_view, const sf::View &view)
+{
+}
+
+void Entity::render(sf::RenderTarget &target)
+{
+    target.draw(this->sprite);
+
+    if (this->hitboxComponent)
+        this->hitboxComponent->render(target);
 }
 
 const float Entity::getDistance(const Entity &entity) const

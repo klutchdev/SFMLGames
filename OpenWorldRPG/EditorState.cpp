@@ -1,7 +1,7 @@
 #include "headers.h"
 #include "EditorState.h"
 
-//============= PRIVATE =================//
+// ============= PRIVATE =================//
 // Initializers
 void EditorState::initVariables()
 {
@@ -39,7 +39,7 @@ void EditorState::initButtons()
 {
 }
 
-//============= CONSTRUCTOR =============//
+// ============= CONSTRUCTOR =============//
 EditorState::EditorState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
     : State(window, supportedKeys, states)
 {
@@ -60,7 +60,7 @@ EditorState::~EditorState()
     }
 }
 
-//============= PUBLIC ==================//
+// ============= PUBLIC ==================//
 void EditorState::updateInput(const float &dt)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
@@ -82,7 +82,7 @@ void EditorState::update(const float &dt)
     this->updateButtons();
 }
 
-void EditorState::renderButtons(sf::RenderTarget *target)
+void EditorState::renderButtons(sf::RenderTarget &target)
 {
     for (auto &it : this->buttons)
     {
@@ -95,5 +95,5 @@ void EditorState::render(sf::RenderTarget *target)
     if (!target)
         target = this->window;
 
-    this->renderButtons(target);
+    this->renderButtons(*target);
 }

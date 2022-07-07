@@ -2,10 +2,8 @@
 #include "MovementComponent.h"
 
 // ============= CONSTRUCTOR =============//
-MovementComponent::MovementComponent(sf::Sprite &sprite,
-                                     float maxVelocity, float acceleration, float deceleration)
-    : sprite(sprite),
-      maxVelocity(maxVelocity), acceleration(acceleration), deceleration(deceleration)
+MovementComponent::MovementComponent(sf::Sprite &sprite, float maxVelocity, float acceleration, float deceleration)
+    : sprite(sprite), maxVelocity(maxVelocity), acceleration(acceleration), deceleration(deceleration)
 {
 }
 
@@ -26,7 +24,6 @@ const sf::Vector2f &MovementComponent::getVelocity() const
     return this->velocity;
 }
 
-// Functions
 const bool MovementComponent::getState(const short unsigned state) const
 {
     switch (state)
@@ -77,27 +74,24 @@ const bool MovementComponent::getState(const short unsigned state) const
     return false;
 }
 
-void MovementComponent::stopVelocity()
-{
-    /* Resets the velocity to 0.*/
+// void MovementComponent::stopVelocity()
+// {
+//     /* Resets the velocity to 0.*/
+//     this->velocity.x = 0.f;
+//     this->velocity.y = 0.f;
+// }
 
-    this->velocity.x = 0.f;
-    this->velocity.y = 0.f;
-}
+// void MovementComponent::stopVelocityX()
+// {
+//     /* Resets the velocity x to 0.*/
+//     this->velocity.x = 0.f;
+// }
 
-void MovementComponent::stopVelocityX()
-{
-    /* Resets the velocity x to 0.*/
-
-    this->velocity.x = 0.f;
-}
-
-void MovementComponent::stopVelocityY()
-{
-    /* Resets the velocity y to 0.*/
-
-    this->velocity.y = 0.f;
-}
+// void MovementComponent::stopVelocityY()
+// {
+//     /* Resets the velocity y to 0.*/
+//     this->velocity.y = 0.f;
+// }
 
 void MovementComponent::move(const float dir_x, const float dir_y, const float &dt)
 {

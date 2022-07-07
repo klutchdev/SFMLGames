@@ -1,6 +1,6 @@
 #include "Button.h"
 
-//============= CONSTRUCTOR =============//
+// ============= CONSTRUCTOR =============//
 Button::Button(float x, float y, float width, float height,
                sf::Font *font, std::string text, unsigned character_size,
                sf::Color text_idle_color, sf::Color text_hover_color, sf::Color text_active_color,
@@ -31,12 +31,13 @@ Button::Button(float x, float y, float width, float height,
     this->activeColor = active_color;
 }
 
-//============= DESTRUCTOR ==============//
+// ============= DESTRUCTOR ==============//
 Button::~Button()
 {
 }
 
-//============= PUBLIC ==================//
+// ============= PUBLIC ==================//
+// Accessors
 const bool Button::isPressed() const
 {
     if (this->buttonState == BTN_ACTIVE)
@@ -80,8 +81,8 @@ void Button::update(const sf::Vector2f mousePos)
     }
 }
 
-void Button::render(sf::RenderTarget *target)
+void Button::render(sf::RenderTarget &target)
 {
-    target->draw(this->shape);
-    target->draw(this->text);
+    target.draw(this->shape);
+    target.draw(this->text);
 }

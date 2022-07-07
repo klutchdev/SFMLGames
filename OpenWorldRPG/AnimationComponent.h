@@ -35,17 +35,16 @@ private:
             this->sprite.setTextureRect(this->startRect);
         }
 
-        // Accessor
+        // Accessors
         const bool &isDone() const
         {
             return this->done;
         }
 
         // Functions
-        const bool &play(const float &dt)
+        void play(const float &dt)
         {
             // Update timer
-            this->done = false;
             this->timer += 100.f * dt;
             if (this->timer >= this->animationTimer)
             {
@@ -60,22 +59,18 @@ private:
                 else // Reset
                 {
                     this->currentRect.left = this->startRect.left;
-                    this->done = true;
                 }
 
                 this->sprite.setTextureRect(this->currentRect);
             }
-
-            return this->done;
         }
 
-        const bool &play(const float &dt, float mod_percent)
+        void play(const float &dt, float mod_percent)
         {
             // Update timer
             if (mod_percent < 0.5f)
                 mod_percent = 0.5f;
 
-            this->done = false;
             this->timer += mod_percent * 100.f * dt;
             if (this->timer >= this->animationTimer)
             {
@@ -90,13 +85,10 @@ private:
                 else // Reset
                 {
                     this->currentRect.left = this->startRect.left;
-                    this->done = true;
                 }
 
                 this->sprite.setTextureRect(this->currentRect);
             }
-
-            return this->done;
         }
 
         void reset()
@@ -124,8 +116,8 @@ public:
                       float animation_timer,
                       int start_frame_x, int start_frame_y, int frames_x, int frames_y, int width, int height);
 
-    const bool play(const std::string key, const float &dt, const bool priority = false);
-    const bool &play(const std::string key, const float &dt, const float &modifier, const float &modifier_max, const bool priority = false);
+    void play(const std::string key, const float &dt);
+    void play(const std::string key, const float &dt, const float &modifier, const float &modifier_max);
 };
 
 #endif

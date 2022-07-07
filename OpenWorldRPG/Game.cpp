@@ -1,7 +1,7 @@
 #include "headers.h"
 #include "Game.h"
 
-//============= PRIVATE =================//
+// ============= PRIVATE =================//
 // Initializers
 void Game::initVariables()
 {
@@ -77,7 +77,7 @@ void Game::initStates()
     // this->states.push(new GameState(this->window, &this->supportedKeys));
 }
 
-//============= CONSTRUCTOR =============//
+// ============= CONSTRUCTOR =============//
 Game::Game()
 {
     system("clear");
@@ -87,7 +87,7 @@ Game::Game()
     this->initStates();
 }
 
-//============= DESTRUCTOR ==============//
+// ============= DESTRUCTOR ==============//
 Game::~Game()
 {
     delete this->window;
@@ -99,7 +99,7 @@ Game::~Game()
     }
 }
 
-//============= PUBLIC ==================//
+// ============= PUBLIC ==================//
 void Game::updateDt()
 {
     this->dt = this->dtClock.restart().asSeconds();

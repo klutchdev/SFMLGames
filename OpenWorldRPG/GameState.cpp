@@ -1,7 +1,8 @@
 #include "headers.h"
 #include "GameState.h"
 
-//============= PRIVATE =================//
+// ============= PRIVATE =================//
+// Initializers
 void GameState::initKeybinds()
 {
     std::ifstream ifs("Config/gamestate_keybinds.ini");
@@ -26,12 +27,13 @@ void GameState::initTextures()
         std::cout << "Error loading player idle texture" << std::endl;
 }
 
+//! TODO: Fix this
 void GameState::initPlayers()
 {
-    this->player = new Player(220, 220, this->textures["PLAYER_SHEET"]);
+    this->player = new Player(220.f, 220.f, this->textures["PLAYER_SHEET"]);
 }
 
-//============= CONSTRUCTOR =============//
+// ============= CONSTRUCTOR =============//
 GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states)
     : State(window, supportedKeys, states)
 {
@@ -40,14 +42,13 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     this->initPlayers();
 }
 
-//============= DESTRUCTOR ==============//
+// ============= DESTRUCTOR ==============//
 GameState::~GameState()
 {
     delete this->player;
 }
 
-//============= PUBLIC ==================//
-
+// ============= PUBLIC ==================//
 void GameState::updateInput(const float &dt)
 {
 
@@ -81,5 +82,5 @@ void GameState::render(sf::RenderTarget *target)
     if (!target)
         target = this->window;
 
-    this->player->render(this->renderTexture);
+    this->player->render(*target);
 }

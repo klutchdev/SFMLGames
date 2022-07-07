@@ -4,13 +4,13 @@
 
 int main()
 {
-  //============= INIT SRAND ===================//
+  // ============= INIT SRAND ===================//
   std::srand(static_cast<unsigned int>(time(0)));
 
-  //============= INIT GAME ENGINE =============//
+  // ============= INIT GAME ENGINE =============//
   Game game;
 
-  //============= GAME LOOP ====================//
+  // ============= GAME LOOP ====================//
   game.run();
 
   return 0;
