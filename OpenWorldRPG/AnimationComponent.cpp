@@ -30,7 +30,7 @@ void AnimationComponent::addAnimation(const std::string key, float animation_tim
     this->animations[key] = new Animation(this->sprite, this->textureSheet, animation_timer, start_frame_x, start_frame_y, frames_x, frames_y, width, height);
 }
 
-const bool &AnimationComponent::play(const std::string key, const float &dt, const bool priority)
+const bool &AnimationComponent::play(std::string key, const float &dt, const bool priority)
 {
 
     if (this->priorityAnimation) // If there is a priority animation
@@ -82,7 +82,7 @@ const bool &AnimationComponent::play(const std::string key, const float &dt, con
     return this->animations[key]->isDone();
 }
 
-const bool &AnimationComponent::play(const std::string key, const float &dt, const float &modifier, const float &modifier_max, const bool priority)
+const bool &AnimationComponent::play(std::string key, const float &dt, const float &modifier, const float &modifier_max, const bool priority)
 {
     if (this->priorityAnimation) // If there is a priority animation
     {

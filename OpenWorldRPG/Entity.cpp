@@ -112,17 +112,17 @@ void Entity::move(const float dir_x, const float dir_y, const float &dt)
         this->movementComponent->move(dir_x, dir_y, dt); // Sets velocity
 }
 
-void Entity::update(const float &dt, sf::Vector2f &mouse_pos_view, const sf::View &view)
-{
-}
+// void Entity::update(const float &dt, sf::Vector2f &mouse_pos_view, const sf::View &view)
+// {
+// }
 
-void Entity::render(sf::RenderTarget &target)
-{
-    target.draw(this->sprite);
+// void Entity::render(sf::RenderTarget &target)
+// {
+//     target.draw(this->sprite);
 
-    if (this->hitboxComponent)
-        this->hitboxComponent->render(target);
-}
+//     if (this->hitboxComponent)
+//         this->hitboxComponent->render(target);
+// }
 
 const float Entity::getDistance(const Entity &entity) const
 {

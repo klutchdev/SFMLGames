@@ -113,8 +113,8 @@ MainMenuState::MainMenuState(sf::RenderWindow *window, std::map<std::string, int
 // ============= DESTRUCTOR ==============//
 MainMenuState::~MainMenuState()
 {
-    // auto it = this->buttons.begin();
-    for (auto it = this->buttons.begin(); it != this->buttons.end(); ++it)
+    auto it = this->buttons.begin();
+    for (it; it != this->buttons.end(); ++it)
     {
         delete it->second;
     }

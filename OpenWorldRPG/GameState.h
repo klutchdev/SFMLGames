@@ -4,13 +4,15 @@
 #include "headers.h"
 #include "State.h"
 #include "Player.h"
+#include "PauseMenu.h"
 
 class GameState : public State
 {
 private:
-    sf::RenderTexture renderTexture;
+    PauseMenu pmenu;
 
     Player *player;
+    sf::Texture texture;
 
     void initKeybinds();
     void initTextures();

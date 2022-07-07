@@ -1,10 +1,11 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include "HitboxComponent.h"
 #include "MovementComponent.h"
 #include "AnimationComponent.h"
-#include "HitboxComponent.h"
 
+class HitboxComponent;
 class MovementComponent;
 class AnimationComponent;
 
