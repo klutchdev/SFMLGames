@@ -43,10 +43,7 @@ void GameState::initPauseMenu()
 
 void GameState::initPlayers()
 {
-    // TODO:
-    //! THE FUCK       👇🏼👇🏼👇🏼👇🏼
     this->player = new Player(0, 0, this->textures["PLAYER_SHEET"]);
-    //! IS  THIS       👆🏻👆🏻👆🏻👆🏻
 }
 
 // ============= CONSTRUCTOR =============//
@@ -70,7 +67,7 @@ GameState::~GameState()
 // ============= PUBLIC ==================//
 void GameState::updateInput(const float &dt)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))) && this->getKeytime())
     {
         if (this->paused)
         {
@@ -101,7 +98,7 @@ void GameState::updatePlayerInput(const float &dt)
 
 void GameState::updatePauseMenuButtons()
 {
-    if (this->pmenu->isButtonPressed("QUIT"))
+    if (this->pmenu->isButtonPressed("QUIT") && this->getKeytime())
     {
         this->endState();
     }
@@ -110,6 +107,7 @@ void GameState::updatePauseMenuButtons()
 void GameState::update(const float &dt)
 {
     this->updateMousePositions();
+    this->updateKeytime(dt);
     this->updateInput(dt);
 
     if (!this->paused) // Unpaused update

@@ -1,12 +1,10 @@
-#ifndef MAIN_MENU_STATE_H
-#define MAIN_MENU_STATE_H
+#ifndef SETTINGSSTATE_H
+#define SETTINGSSTATE_H
 
-#include "GameState.h"
-#include "EditorState.h"
-#include "SettingsState.h"
+#include "State.h"
 #include "Button.h"
 
-class MainMenuState : public State
+class SettingsState : public State
 {
 private:
     sf::Texture backgroundTexture;
@@ -22,8 +20,8 @@ private:
     void initButtons();
 
 public:
-    MainMenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
-    virtual ~MainMenuState();
+    SettingsState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
+    virtual ~SettingsState();
 
     void updateInput(const float &dt);
     void updateButtons();
